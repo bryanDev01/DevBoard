@@ -1,10 +1,12 @@
 
 import { BadgeList } from "@/components/BadgeList";
+import { Header } from "@/components/theme/Header";
 
 export default function Home() {
 
   return (
-    <div className=" w-full h-full bg-slate-950">
+    <div className=" w-full h-full">
+      <Header />
       <BadgeList />
     </div>
   );

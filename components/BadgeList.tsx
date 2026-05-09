@@ -12,13 +12,13 @@ export function BadgeList() {
 
   return (
     <section className="px-3 pt-3 pb-3 w-full h-full">
-      <div className=" flex justify-center items-center gap-2 bg-black/50">
+      <div className=" flex justify-center items-center gap-2">
         <button onClick={() => {
           setCount(count - 1) // ❌ BAD
           setCount(count - 1)
           setCount(count - 1)
           }} className=" bg-amber-300 rounded px-2 py-1">-</button>
-          <span className=" font-semibold text-lg text-white">{count}</span>
+          <span className=" font-semibold text-lg">{count}</span>
         <button onClick={() => {
           setCount((count) => count + 1) // ✅ GOOD (Forma funcional del estado)
           setCount((count) => count + 1)
