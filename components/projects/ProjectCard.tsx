@@ -1,16 +1,9 @@
+import { ProjectType } from "@/hooks/useProjects";
 import { badgeStatus } from "../Badge";
 import React, { useState } from "react";
 
-type Project = {
-  id: string;
-  title: string;
-  description: string;
-  status: "active" | "paused" | "completed";
-  taskCount: number;
-};
-
 type ProjectCardProps = {
-  project: Project;
+  project: ProjectType;
   onDelete: (id: string) => void;
 };
 
