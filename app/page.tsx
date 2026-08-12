@@ -1,11 +1,10 @@
 
 import { BadgeList } from "@/components/BadgeList";
-import { Header } from "@/components/theme/Header";
 
 export default function Home() {
 
   return (
-    <div className=" w-full h-full">
+    <div className=" w-full h-full flex flex-col justify-center items-center gap-3">
       <BadgeList />
     </div>
   );
