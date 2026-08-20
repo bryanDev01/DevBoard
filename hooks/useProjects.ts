@@ -1,5 +1,6 @@
 import { mockProjects } from "@/static/data";
-import { useCallback, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
+import { useList } from "./useList";
 
 export type ProjectType = {
   id: string;
@@ -10,29 +11,18 @@ export type ProjectType = {
 };
 
 export const useProjects = () => {
-  const [projects, setProjects] = useState<ProjectType[]>(mockProjects);
+  const { items, addItem, updateItem, deleteItem, findItemById } = useList<ProjectType>(mockProjects);
   const [filter, setFilter] = useState<string>("All");
 
   const filteredProjects = useMemo(() => {
-    if (filter.toLowerCase() === "all") return projects;
+    if (filter.toLowerCase() === "all") return items;
     else {
-      const filtered = projects.filter(
-        (mp) => mp.status === filter.toLowerCase(),
+      const filtered = items.filter(
+        (item) => item.status === filter.toLowerCase(),
       );
       return filtered;
     }
-  }, [projects, filter]);
+  }, [items, filter]);
 
-  const addProject = useCallback(
-    (project: Omit<ProjectType, "id">) => {
-      setProjects((prev) => [...prev,  {...project, id: crypto.randomUUID()}])
-    },
-    [],
-  );
-
-  const deleteProject = useCallback((id: string) => {
-    setProjects((prev) => prev.filter((project) => project.id !== id));
-  }, []);
-
-  return { filter, setFilter, projects: filteredProjects, addProject, deleteProject, totalProjects: projects.length };
+  return { filter, setFilter, projects: filteredProjects, addItem, updateItem, deleteItem, findItemById, totalProjects: items.length };
 };
